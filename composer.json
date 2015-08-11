@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "LIUM\\": "src/LIUM"
+    }
+  },
+  "require": {
+    "katzgrau/klogger": "dev-master"
+  }
+}
