@@ -28,8 +28,8 @@ try {
    */
   $logger = new Logger('./data/logs', Psr\Log\LogLevel::INFO, array('filename' => 'diarization-log'));
   $logger_adapter = new LoggerAdapter($logger, 'info', 'error');
-  //$lium = new Lium($environment, $logger_adapter);
-  //$lium->executeAll();
+  $lium = new Lium($environment, $logger_adapter);
+  $lium->executeAll();
   /**
    * Parse segmentation file created by lium into JSON
    */
