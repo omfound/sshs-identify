@@ -1,0 +1,63 @@
+body {
+  font-family: sans-serif;
+}
+
+.centered {
+  width: 1040px;
+  margin: auto;
+}
+
+video {
+  float: left;
+}
+
+.segment-list {
+  float: left;
+  width: 640px;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.item {
+  background-color: #FFFFFF;
+  transition: background-color 1s;
+}
+
+.item.selected {
+  background-color: #EFEFEF;
+}
+
+.item ul {
+  margin: 0;
+}
+
+.item li {
+  float: left;
+  list-style: none;
+  padding: 5px;
+}
+
+.item-start,
+.item-end {
+  width: 50px;
+}
+
+.speaker-id {
+  width: 75px;
+}
+
+.speaker-gender {
+  width: 25px;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
+}

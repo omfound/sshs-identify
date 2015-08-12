@@ -5,6 +5,7 @@
     }
   },
   "require": {
-    "katzgrau/klogger": "dev-master"
+    "katzgrau/klogger": "dev-master",
+    "silex/silex": "1.3"
   }
 }
