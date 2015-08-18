@@ -6,15 +6,23 @@
   <body>
     <div class="centered">
       <h1>SSHS Identify</h1>
-      <div id="app" data-app-root="/sshs-identify"></div>
+      <div id="app"></div>
     </div>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://fb.me/react-0.13.3.js"></script>
-    <script src="./js/video.js"></script>
-    <script src="./js/wrapper.js"></script>
-    <script src="./js/speaker-select.js"></script>
-    <script src="./js/seg-lister.js"></script>
-    <script src="./js/seg-lister-item.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="./js/app.js"></script> 
+    <script src="./js/video.js"></script> 
+    <script src="./js/seg-lister.js"></script> 
+    <script src="./js/seg-lister-item.js"></script> 
+    <script src="./js/speaker-assignment.js"></script> 
+    <script>
+      var config = {
+        appRoot: "/sshs-identify"
+      };
+      React.render(
+        React.createElement(LIUM.App, config),
+        $('#app')[0]
+      );
+    </script>
   </body>
 </html>

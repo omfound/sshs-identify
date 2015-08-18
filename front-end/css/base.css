@@ -13,7 +13,7 @@ video {
 
 .segment-list {
   float: left;
-  width: 640px;
+  width: 540px;
   height: 600px;
   overflow-y: scroll;
 }
