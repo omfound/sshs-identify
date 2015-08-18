@@ -7,7 +7,7 @@ $environment = new Environment(FALSE);
 $environment->set("input_directory_path", "data/input")
   ->set("output_directory_path", "data/output")
   ->set("seg_directory_path", "data/output")
-  ->set("front_end_app_root", "../");
+  ->set("front_end_app_root", "");
 
 $app = new Application();
 $app['sshs_environment'] = $environment;
