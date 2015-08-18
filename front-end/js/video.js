@@ -29,10 +29,12 @@
       return nextProps.url !== this.props.url;
     },
     seekVideo: function(start, stop) {
-      var video = this.refs.video.getDOMNode();
-      this.setState({start: start, stop});
-      video.currentTime = start;
-      video.play();
+      if (start > 0) {
+        var video = this.refs.video.getDOMNode();
+        this.setState({start: start, stop});
+        video.currentTime = start;
+        video.play();
+      }
     },
     render: function() {
       return React.DOM.video({width: this.props.width, height: this.props.height, controls: true, ref: 'video', preload: 'auto'},

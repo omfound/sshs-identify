@@ -31,14 +31,24 @@
       } 
       if (this.state.mode == MODE_SEGMENT_ASSESS) {
         return React.DOM.div({},
-          React.createElement(LIUM.Video, {
-            url: this.state.selectedAssets.video, 
-            appRoot: this.props.appRoot,
-            videoCallback: this.handleVideoChange,
-            ref: 'video'
-          }),
-          React.createElement(LIUM.SpeakerAssignment, {speakers: this.state.speakers}),
-          React.createElement(LIUM.SegLister, {options: this.state.segments, seekCallback: this.handleSeek, currentVideoTime: this.state.currentVideoTime})
+          React.DOM.div({className: 'col col-2'},
+            React.createElement(LIUM.Video, {
+              url: this.state.selectedAssets.video, 
+              appRoot: this.props.appRoot,
+              videoCallback: this.handleVideoChange,
+              ref: 'video'
+            }),
+            React.createElement(LIUM.Save, {saveCallback: this.saveCallback})
+          ),
+          React.DOM.div({className: 'col col-2'},
+            React.createElement(LIUM.SegLister, {
+              options: this.state.segments,
+              seekCallback: this.handleSeek,
+              currentVideoTime: this.state.currentVideoTime,
+              ref: 'segLister'
+            }),
+            React.createElement(LIUM.SpeakerAssignment, {speakers: this.state.speakers, speakerChangeCallback: this.speakerChangeCallback})
+          )
         );
       }
       if (this.state.mode == MODE_LOADING) {
@@ -66,6 +76,40 @@
     },
     handleVideoChange: function(currentTime) {
       this.setState({currentVideoTime: currentTime});
+    },
+    speakerChangeCallback: function(speaker, type) {
+      var selected = this.refs.segLister.getSelectedIds();
+      if (selected.length > 0) {
+        this.refs.segLister.resetSelected(selected);
+        var segments = this.state.segments;
+        if (type == 'assign-all') {
+          var speakerLabel = segments[selected[0]].speaker_label;
+          for (var x in segments) {
+            if (segments[x].speaker_label == speakerLabel) {
+              segments[x].assigned_speaker = speaker.full_name;
+            }
+          }
+        }
+        if (type == 'assign') {
+          for (var x in selected) {
+            segments[x].assigned_speaker = speaker.full_name;
+          }
+        }
+        this.setState({segments: segments});
+      }
+    },
+    saveCallback: function() {
+      this.ajax({
+        type: 'POST',
+        url: this.props.appRoot + '/segments',
+        data: JSON.stringify({segments: this.state.segments, asset: this.state.selectedAssets.video}),
+        success: this.saveSuccess,
+        dataType: 'json',
+        contentType: 'application/json'
+      });
+    },
+    saveSuccess: function() {
+      console.log('yay');
     }
   });
   LIUM.App.prototype.ajax = $.ajax;

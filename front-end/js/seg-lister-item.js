@@ -23,11 +23,12 @@
           React.DOM.li({className: 'item-end'}, convert_time(this.props.end)),
           React.DOM.li({className: 'speaker-id'}, this.props.speaker_label),
           React.DOM.li({className: 'speaker-gender'}, this.props.speaker_gender),
+          React.DOM.li({className: 'assigned-speaker'}, this.props.assigned_speaker || 'none'),
           React.DOM.li({className: 'segment-play-action'},
             React.DOM.a({onClick: this.handleSeekClick.bind(this, this.props.start / 100, this.props.end / 100), href: '#'}, 'Play Segment')
           ),
           React.DOM.li({className: 'item-select-action'},
-            React.DOM.input({onClick: this.handleSelectClick, type: 'checkbox'})
+            React.DOM.input({onChange: this.handleSelectClick, type: 'checkbox', checked: this.state.selected})
           ),
           React.DOM.li({className: 'status'}, playing)
         )

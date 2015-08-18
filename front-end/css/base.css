@@ -11,9 +11,15 @@ video {
   float: left;
 }
 
-.segment-list {
+.col {
   float: left;
-  width: 540px;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.segment-list {
   height: 600px;
   overflow-y: scroll;
 }

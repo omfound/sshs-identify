@@ -27,7 +27,7 @@
     handleClick: function(type, e) {
       if (this.props.speakerChangeCallback) {
         var list = this.refs.list.getDOMNode();
-        var value = this.state.assets[list.selectedIndex]; 
+        var value = this.props.speakers[list.selectedIndex]; 
         this.props.speakerChangeCallback(value, type);
       } 
       e.preventDefault();
