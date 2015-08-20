@@ -16,7 +16,7 @@ class Lium {
       $info = pathinfo($file);
       if (!empty($info['extension']) && in_array($info['extension'], $this->extensions)) {
         $this->logger->info('Beginning diarization of ' . $file);
-        $show_name = $this->environment->buildShowName($file); 
+        $show_name = $this->environment->buildShowName($info['filename']); 
         $output = $this->execute($input_dir . '/' . $file, $show_name);
         $this->logger->info($output);
         $this->logger->info('Finished diarization of ' . $file);
