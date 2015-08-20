@@ -38,5 +38,9 @@ try {
   $parser->parse();
 }
 catch (Exception $e) {
-  print "Environment Error: " . $e->getMessage() . "\n";
+  $message = "Environment Error: " . $e->getMessage();
+  print "$message \n";
+  if (!empty($logger_adapter)) {
+    $logger_adapter->error($message);
+  }
 }
