@@ -1,11 +1,15 @@
 (function(exports) {
   LIUM = exports.LIUM = exports.LIUM || {};
   LIUM.SpeakerAssignment = React.createClass({
+    mixins: [LIUM.Select2Mixin],
     getDefaultProps: function() {
       return {
         speakers: [],
         speakerChangeCallback: false
       };
+    },
+    componentDidMount: function() {
+      this.attachSelect2(this.refs.list.getDOMNode());
     },
     shouldComponentUpdate: function(nextProps, nextState) {
       return this.props.speakers.length !== nextProps.speakers.length;

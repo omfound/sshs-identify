@@ -7,10 +7,6 @@ body {
   margin: auto;
 }
 
-video {
-  float: left;
-}
-
 .col {
   float: left;
 }
@@ -20,7 +16,7 @@ video {
 }
 
 .segment-list {
-  height: 600px;
+  height: 450px;
   overflow-y: scroll;
 }
 
@@ -35,6 +31,7 @@ video {
 
 .item ul {
   margin: 0;
+  padding: 0;
 }
 
 .item li {
@@ -54,6 +51,17 @@ video {
 
 .speaker-gender {
   width: 25px;
+}
+
+form {
+  margin-top: 10px;
+}
+
+.asset-select label,
+.asset-select select,
+.asset-select input {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .cf:before,

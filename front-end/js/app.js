@@ -23,7 +23,7 @@
         for (var x in this.state.assets) {
           options.push(React.DOM.option({key: x, value: x}, this.state.assets[x].video)); 
         }
-        return React.DOM.form({onSubmit: this.handleSubmit},
+        return React.DOM.form({onSubmit: this.handleSubmit, className: 'asset-select'},
           React.DOM.label({}, 'Select a video file:'),
           React.DOM.select({ref: 'list'}, options),
           React.DOM.input({type: 'submit', onClick: this.handleSubmit, value: 'Go'})
