@@ -29,3 +29,22 @@ The front end tool is a simple interface written with jQuery and React. It allow
 The front end tool's output JSON will be dated and sent to the output directory.
 
 NB: The front end app currently expects mp4 and json files to have matching file names and anticpates speakers.json for the list of potential speakers.
+
+## Final Example Output
+```
+{
+    "show_name": "large-sample-monowav",
+    "channel_number": "1",
+    "start": "191644",
+    "length": "195",
+    "speaker_gender": "F",
+    "type_band": "S",
+    "type_environment": "U",
+    "speaker_label": "S1076",
+    "end": 191839,
+    "key": "112",
+    "ref": "112",
+    "currentVideoTime": 2685.852855,
+    "assigned_speaker": "Rhonda Fields"
+}
+```
