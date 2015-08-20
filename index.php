@@ -55,7 +55,7 @@ $app->post('/segments', function (Request $request) use ($app) {
       $fp = fopen($url, 'w');
       $outcome = fwrite($fp, json_encode($request->get('segments')));
       fclose($fp);
-      return new Response('Created new output file: ' . $url, 201);
+      return $app->json('Created new output file: ' . $url, 201);
     }
     catch (Exception $e) {
       return new Response($e->getMessage(), 400);

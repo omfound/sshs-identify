@@ -104,12 +104,16 @@
         url: this.props.appRoot + '/segments',
         data: JSON.stringify({segments: this.state.segments, asset: this.state.selectedAssets.video}),
         success: this.saveSuccess,
+        error: this.saveError,
         dataType: 'json',
         contentType: 'application/json'
       });
     },
-    saveSuccess: function() {
-      console.log('yay');
+    saveSuccess: function(data) {
+      console.log(data);
+    },
+    saveError: function(xhr, error) {
+      console.log(error);
     }
   });
   LIUM.App.prototype.ajax = $.ajax;
