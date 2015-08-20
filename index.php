@@ -49,7 +49,7 @@ $app->post('/segments', function (Request $request) use ($app) {
   $output_dir = $app['sshs_environment']->get('output_directory_path');
   if (!empty($request->get('segments')) && !empty($request->get('asset'))) {
     $info = pathinfo($request->get('asset'));
-    $file_name = $info['filename'] . '-output-' . date('Y-m-d-his') . '.json';
+    $file_name = 'output-' . $info['filename'] . date('Y-m-d-his') . '.json';
     $url = $output_dir . '/' . $file_name;
     try {
       $fp = fopen($url, 'w');
