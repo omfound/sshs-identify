@@ -96,7 +96,7 @@
         }
         if (type == 'assign') {
           for (var x in selected) {
-            segments[x].assigned_speaker = speaker.full_name;
+            segments[selected[x]].assigned_speaker = speaker.full_name;
           }
         }
         this.setState({segments: segments});
