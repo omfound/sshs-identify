@@ -48,3 +48,5 @@ NB: The front end app currently expects mp4 and json files to have matching file
     "assigned_speaker": "Rhonda Fields"
 }
 ```
+
+This project is made possible by the [Open Media Foundation](http://openmediafoundation.org) with support from the [Knight Foundation Prototype Fund](http://knightfoundation.org/funding-initiatives/knight-prototype-fund).
