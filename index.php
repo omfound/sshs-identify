@@ -14,6 +14,9 @@ $environment->set("input_directory_path", "data/input")
 $app = new Application();
 $app['sshs_environment'] = $environment;
 
+/**
+ * Not sure if we actually need this.
+ */
 $app->before(function (Request $request) {
   if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
     $data = json_decode($request->getContent(), true);
@@ -27,16 +30,19 @@ $app->get('/assets', function() use($app) {
     $output_dir = $app['sshs_environment']->get('output_directory_path');
     $app_root = $app['sshs_environment']->get('front_end_app_root');
     $files = scandir($input_dir);
+    $output_files = $app['sshs_environment']->getOutputFiles();
     foreach ($files AS $file) {
       $info = pathinfo($file);
       if (!empty($info['extension']) && $info['extension'] == 'mp4') {
         $json_path = $output_dir . '/' . $info['filename'] . '.json';
         $speaker_path = $output_dir . '/speakers.json';
         if (file_exists($json_path) && file_exists($speaker_path)) {
+          $has_been_assessed = in_array($info['filename'], $output_files);
           $row = array(
             'video' => $app_root . $input_dir . '/' . $file, 
             'json' => $app_root . $json_path,
-            'speakers' => $app_root . $speaker_path
+            'speakers' => $app_root . $speaker_path,
+            'assessed' => $has_been_assessed
           );
           $output[] = $row;
         }
@@ -49,7 +55,7 @@ $app->post('/segments', function (Request $request) use ($app) {
   $output_dir = $app['sshs_environment']->get('output_directory_path');
   if (!empty($request->get('segments')) && !empty($request->get('asset'))) {
     $info = pathinfo($request->get('asset'));
-    $file_name = 'output-' . $info['filename'] . date('Y-m-d-his') . '.json';
+    $file_name = 'output-' . $info['filename'] . '-t' . date('Y-m-d-his') . '.json';
     $url = $output_dir . '/' . $file_name;
     try {
       $fp = fopen($url, 'w');

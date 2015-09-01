@@ -34,6 +34,21 @@ class Environment {
   public function buildShowName($source) {
     return strtolower(str_replace(array(' ', '.'), array('_', ''), $source));
   }
+  public function getOutputFiles($extensions = array('json')) {
+    $files = scandir($this->output_directory_path); 
+    $output = array();
+    foreach ($files AS $file) {
+      $info = pathinfo($file);
+      if (strpos($info['filename'], 'output') !== FALSE && !empty($info['extension']) && in_array($info['extension'], $extensions)) {
+        $id = substr($info['filename'], 0, strpos($info['filename'], '-t'));
+        $id = ltrim($id, 'output-');
+        if (!in_array($id, $output)) {
+          $output[] = $id;
+        }
+      }
+    } 
+    return $output;
+  }
   public function get($property) {
     return !empty($this->{$property}) ? $this->{$property} : FALSE;
   }
