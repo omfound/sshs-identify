@@ -21,7 +21,11 @@
       if (this.state.mode == MODE_ASSET_SELECT) {
         var options = [];
         for (var x in this.state.assets) {
-          options.push(React.DOM.option({key: x, value: x}, this.state.assets[x].video)); 
+          var title = this.state.assets[x].video;
+          if (this.state.assets[x].assessed == true) {
+            title = '*' + title;
+          }
+          options.push(React.DOM.option({key: x, value: x}, title)); 
         }
         return React.DOM.form({onSubmit: this.handleSubmit, className: 'asset-select'},
           React.DOM.label({}, 'Select a video file:'),
