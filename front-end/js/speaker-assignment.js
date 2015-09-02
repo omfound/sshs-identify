@@ -22,7 +22,8 @@
       return React.DOM.form({onSubmit: this.handleSubmit},
         React.DOM.select({ref: 'list'}, options), 
         React.DOM.input({type: 'submit', onClick: this.handleClick.bind(this, 'assign'), value: 'Assign Speaker'}),
-        React.DOM.input({type: 'submit', onClick: this.handleClick.bind(this, 'assign-all'), value: 'Assign Speaker To All With This ID'}) 
+        React.DOM.input({type: 'submit', onClick: this.handleClick.bind(this, 'assign-all'), value: 'Assign Speaker To All With This ID'}),
+        React.DOM.input({type: 'submit', onClick: this.handleClick.bind(this, 'remove'), value: 'Unassign Speaker'}) 
       );
     },
     handleSubmit: function(e) {

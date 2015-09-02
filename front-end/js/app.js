@@ -99,6 +99,11 @@
             segments[selected[x]].assigned_speaker = speaker.full_name;
           }
         }
+        if (type == 'remove') {
+          for (var x in selected) {
+            segments[selected[x]].assigned_speaker = null;
+          }
+        }
         this.setState({segments: segments});
       }
     },
